@@ -5,3 +5,14 @@ ul {
 #choices li input {
   margin-right: 12px;
 }
+
+#nextBtn {
+  width:50px;
+  height:40px;
+  background-color:teal;
+  cursor: pointer;
+  color: #fff;
+  line-height: 41px;
+  text-align:center;
+  border-radius:5px;
+}
