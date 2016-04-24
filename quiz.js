@@ -3,8 +3,6 @@ window.onload = function() {
   //Quiz constructor
   function Quiz(questions) {
     this.questions = questions;
-    //this.currentQ = questions[0];
-    //this.score = 0;
   }
 
   Quiz.prototype.nextQuestion = function(){
@@ -83,16 +81,12 @@ window.onload = function() {
   var choice2 = document.getElementById('choice2').nextSibling;
   var choice3 = document.getElementById('choice3').nextSibling;
 
-  //populate first question
-  //initiateQuiz();
-
   //start quiz
   startQuiz = function(){
     document.getElementById('quizContainer').style.display = 'block';
     startBtn.style.display = 'none';
     initiateQuiz();
   };
-
 
   // Next question
   var nextButton = document.getElementById('nextBtn');
