@@ -1,15 +1,6 @@
 window.onload = function() {
-  var allQuestions = [
-      {statement: "Who is often given credit for inventing cubism?", choices: ["Georges Braque", "Frida Kahlo", "Francis Picabia", "Marcel Duchamp"], correctAnswer:0},
-      {statement: "Matisse died in 1954 leaving his ceiling covered with drawings. How come?", choices: ["After 60 years of paint fumes he wasn\'t \'all there\' towards the end.","He was doing preliminary sketches for a ceiling fresco.","He was bedridden and drew using a long stick.","He ran out of walls to draw on."], correctAnswer:2},
-      {statement: "Q 3", choices: ["Q 3 A","Q 3 B","Q 3 C","Q 3 D"], correctAnswer:2},
-      {statement: "Q 4", choices: ["Q 4 A","Q 4 B","Q 4 C","Q 4 D"], correctAnswer:3},
-      {statement: "Q 5", choices: ["Q 5 A","Q 5 B","Q 5 C","Q 5 D"], correctAnswer:1},
-      {statement: "Q 6", choices: ["Q 6 A","Q 6 B","Q 6 C","Q 6 D"], correctAnswer:0}
-    ];
 
-  var artQuiz = new Quiz(allQuestions);
-
+  //Quiz constructor
   function Quiz(questions) {
     this.questions = questions;
     this.currentQ = questions[0];
@@ -42,6 +33,17 @@ window.onload = function() {
     choice2.nextSibling.textContent = choices[2];
     choice3.nextSibling.textContent = choices[3];
   };
+
+  //create artQuiz object
+  var allQuestions = [
+    {statement: "Who is often given credit for inventing cubism?", choices: ["Georges Braque", "Frida Kahlo", "Francis Picabia", "Marcel Duchamp"], correctAnswer:0},
+    {statement: "Matisse died in 1954 leaving his ceiling covered with drawings. How come?", choices: ["After 60 years of paint fumes he wasn\'t \'all there\' towards the end.","He was doing preliminary sketches for a ceiling fresco.","He was bedridden and drew using a long stick.","He ran out of walls to draw on."], correctAnswer:2},
+    {statement: "Q 3", choices: ["Q 3 A","Q 3 B","Q 3 C","Q 3 D"], correctAnswer:2},
+    {statement: "Q 4", choices: ["Q 4 A","Q 4 B","Q 4 C","Q 4 D"], correctAnswer:3},
+    {statement: "Q 5", choices: ["Q 5 A","Q 5 B","Q 5 C","Q 5 D"], correctAnswer:1},
+    {statement: "Q 6", choices: ["Q 6 A","Q 6 B","Q 6 C","Q 6 D"], correctAnswer:0}
+  ];
+  var artQuiz = new Quiz(allQuestions);
 
   //UI variables
   var questionUI = document.getElementById('question');
