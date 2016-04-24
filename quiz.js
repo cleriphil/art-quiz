@@ -8,12 +8,25 @@ window.onload = function() {
   }
 
   Quiz.prototype.nextQuestion = function(){
+    this.checkAnswer();
     var questions = this.questions;
     var index = questions.indexOf(this.currentQ);
     this.currentQ = questions[index + 1];
     populateQuestion(this.currentQ.statement);
     var currentChoices = this.currentQ.choices;
     populateChoices(currentChoices);
+
+    var radioBtns = document.getElementsByTagName('input');
+    for(i=0;i<4;i++){
+      radioBtns[i].checked = false;
+    }
+  }
+
+  Quiz.prototype.checkAnswer = function(){
+    var correctA = "choice" + this.currentQ.correctAnswer;
+    if(document.getElementById(correctA).checked) {
+    this.score ++;
+    }
   }
 
   var initiateQuiz = function(){
@@ -28,10 +41,10 @@ window.onload = function() {
   };
 
   var populateChoices = function(choices){
-    choice0.nextSibling.textContent = choices[0];
-    choice1.nextSibling.textContent = choices[1];
-    choice2.nextSibling.textContent = choices[2];
-    choice3.nextSibling.textContent = choices[3];
+    choice0.textContent = choices[0];
+    choice1.textContent = choices[1];
+    choice2.textContent = choices[2];
+    choice3.textContent = choices[3];
   };
 
   //create artQuiz object
@@ -47,10 +60,10 @@ window.onload = function() {
 
   //UI variables
   var questionUI = document.getElementById('question');
-  var choice0 = document.getElementById('choice0');
-  var choice1 = document.getElementById('choice1');
-  var choice2 = document.getElementById('choice2');
-  var choice3 = document.getElementById('choice3');
+  var choice0 = document.getElementById('choice0').nextSibling;
+  var choice1 = document.getElementById('choice1').nextSibling;
+  var choice2 = document.getElementById('choice2').nextSibling;
+  var choice3 = document.getElementById('choice3').nextSibling;
 
   //populate first question
   initiateQuiz();
@@ -58,11 +71,6 @@ window.onload = function() {
   // Next question
   var nextButton = document.getElementById('nextBtn');
   nextButton.addEventListener('click', function() { artQuiz.nextQuestion() }, false);
+
+
 };
-
-
-/*Quiz.prototype.checkAnswer = function(){
-if(document.getElementById(this.currentQ.correctAnswer).checked) {
-this.score ++;
-}
-}*/
