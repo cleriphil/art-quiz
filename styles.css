@@ -27,3 +27,11 @@ ul {
   color: #008080;
   font-size: 50px;
 }
+
+#quizContainer {
+  display: none;
+}
+
+.show {
+  display: block;
+}

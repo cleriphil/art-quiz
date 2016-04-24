@@ -3,8 +3,8 @@ window.onload = function() {
   //Quiz constructor
   function Quiz(questions) {
     this.questions = questions;
-    this.currentQ = questions[0];
-    this.score = 0;
+    //this.currentQ = questions[0];
+    //this.score = 0;
   }
 
   Quiz.prototype.nextQuestion = function(){
@@ -14,7 +14,12 @@ window.onload = function() {
     if(index < questions.length - 1){
       this.currentQ = questions[index + 1];
     } else {
-      document.getElementById('quizContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span><div id="startQuiz">Try Again</div>';
+      document.getElementById('scoreContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
+      document.getElementById('scoreContainer').style.display = 'block';
+      document.getElementById('quizContainer').style.display = 'none';
+      startBtn.style.display = 'block';
+      startBtn.innerHTML = 'Try Again';
+
     }
 
     //populate next question
@@ -37,6 +42,12 @@ window.onload = function() {
   }
 
   var initiateQuiz = function(){
+
+    //set currentQ and score to default
+    artQuiz.currentQ = artQuiz.questions[0];
+    artQuiz.score = 0;
+    document.getElementById('scoreContainer').style.display = 'none';
+
     var firstQ = artQuiz.currentQ;
     var firstChoices = firstQ.choices;
     populateQuestion(firstQ.statement);
@@ -73,11 +84,23 @@ window.onload = function() {
   var choice3 = document.getElementById('choice3').nextSibling;
 
   //populate first question
-  initiateQuiz();
+  //initiateQuiz();
+
+  //start quiz
+  startQuiz = function(){
+    document.getElementById('quizContainer').style.display = 'block';
+    startBtn.style.display = 'none';
+    initiateQuiz();
+  };
+
 
   // Next question
   var nextButton = document.getElementById('nextBtn');
   nextButton.addEventListener('click', function() { artQuiz.nextQuestion() }, false);
+
+  //start quiz
+  var startBtn = document.getElementById('startQuiz');
+  startBtn.addEventListener('click', startQuiz, false);
 
 
 };
