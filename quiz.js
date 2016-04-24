@@ -20,25 +20,46 @@ window.onload = function() {
     var questions = this.questions;
     var index = questions.indexOf(this.currentQ);
     this.currentQ = questions[index + 1];
-    questionUI.innerHTML = this.currentQ.statement;
+    populateQuestion(this.currentQ.statement);
+    var currentChoices = this.currentQ.choices;
+    populateChoices(currentChoices);
+
   }
 
-  var currentQ = artQuiz.currentQ;
-  var allChoices = currentQ.choices;
+  var firstQ = artQuiz.currentQ;
+  var firstChoices = firstQ.choices;
+
   var questionUI = document.getElementById('question');
-  var choicesUI = document.getElementById('choices');
 
-  questionUI.innerHTML = currentQ.statement;
+  var choice0 = document.getElementById('choice0');
+  var choice1 = document.getElementById('choice1');
+  var choice2 = document.getElementById('choice2');
+  var choice3 = document.getElementById('choice3');
 
+  var populateQuestion = function(statement){
+    questionUI.innerHTML = statement;
+  };
+
+  var populateChoices = function(choices){
+    choice0.nextSibling.textContent = choices[0];
+    choice1.nextSibling.textContent = choices[1];
+    choice2.nextSibling.textContent = choices[2];
+    choice3.nextSibling.textContent = choices[3];
+  };
+
+  populateQuestion(firstQ.statement);
+  populateChoices(firstChoices);
+
+  //var choicesUI = document.getElementById('choices');
   // Cycle through choices and add radio button for each
-  for(i=0; i<4; i++) {
+  /*for(i=0; i<4; i++) {
     var choice = allChoices[i];
     var choiceLi = document.createElement('li');
     choiceLi.setAttribute('id', 'choice' + i);
     choicesUI.appendChild(choiceLi);
     choiceLi.innerHTML = "<input type=\'radio\' id=\'" + i + "\'name=\'action\' value=\'" + i + "\'><label for=\'" + i + "\'>" + choice + "</label><br/>";
 
-  }
+  }*/
 
   // Next answer
   var nextButton = document.getElementById('nextBtn');
