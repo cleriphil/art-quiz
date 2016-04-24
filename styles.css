@@ -6,8 +6,7 @@ ul {
   margin-right: 12px;
 }
 
-#nextBtn {
-  width:50px;
+#nextBtn, #startQuiz {
   height:40px;
   background-color:teal;
   cursor: pointer;
@@ -15,4 +14,16 @@ ul {
   line-height: 41px;
   text-align:center;
   border-radius:5px;
+}
+
+#nextBtn {
+  width:50px;
+}
+
+#startQuiz {
+  width: 100px;
+}
+.score {
+  color: #008080;
+  font-size: 50px;
 }

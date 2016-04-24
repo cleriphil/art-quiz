@@ -11,12 +11,13 @@ window.onload = function() {
     this.checkAnswer();
     var questions = this.questions;
     var index = questions.indexOf(this.currentQ);
-
     if(index < questions.length - 1){
       this.currentQ = questions[index + 1];
     } else {
-      alert("quiz is over");
+      document.getElementById('quizContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span><div id="startQuiz">Try Again</div>';
     }
+
+    //populate next question
     populateQuestion(this.currentQ.statement);
     var currentChoices = this.currentQ.choices;
     populateChoices(currentChoices);
