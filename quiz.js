@@ -11,11 +11,17 @@ window.onload = function() {
     this.checkAnswer();
     var questions = this.questions;
     var index = questions.indexOf(this.currentQ);
-    this.currentQ = questions[index + 1];
+
+    if(index < questions.length - 1){
+      this.currentQ = questions[index + 1];
+    } else {
+      alert("quiz is over");
+    }
     populateQuestion(this.currentQ.statement);
     var currentChoices = this.currentQ.choices;
     populateChoices(currentChoices);
 
+    //uncheck all radio buttons
     var radioBtns = document.getElementsByTagName('input');
     for(i=0;i<4;i++){
       radioBtns[i].checked = false;
