@@ -12,18 +12,18 @@ window.onload = function() {
 
   function Quiz(questions) {
     this.questions = questions;
-    this.currentQuestion = questions[0];
+    this.currentQ = questions[0];
     this.score = 0;
   }
 
   Quiz.prototype.nextQuestion = function(){
-    var current = this.currentQuestion;
-    var currentIndex = this.questions.indexOf(current);
-    this.currentQuestion = this.questions[currentIndex + 1];
-    questionUI.innerHTML = this.currentQuestion.statement;
+    var questions = this.questions;
+    var index = questions.indexOf(this.currentQ);
+    this.currentQ = questions[index + 1];
+    questionUI.innerHTML = this.currentQ.statement;
   }
 
-  var currentQ = artQuiz.currentQuestion;
+  var currentQ = artQuiz.currentQ;
   var allChoices = currentQ.choices;
   var questionUI = document.getElementById('question');
   var choicesUI = document.getElementById('choices');
@@ -36,7 +36,8 @@ window.onload = function() {
     var choiceLi = document.createElement('li');
     choiceLi.setAttribute('id', 'choice' + i);
     choicesUI.appendChild(choiceLi);
-    choiceLi.innerHTML = "<input type=\'radio\' id=\'" + i + "\'name=\'action\' value=\'" + i + "\'>" + choice + "<br/>";
+    choiceLi.innerHTML = "<input type=\'radio\' id=\'" + i + "\'name=\'action\' value=\'" + i + "\'><label for=\'" + i + "\'>" + choice + "</label><br/>";
+
   }
 
   // Next answer
@@ -46,7 +47,7 @@ window.onload = function() {
 
 
 /*Quiz.prototype.checkAnswer = function(){
-if(document.getElementById(this.currentQuestion.correctAnswer).checked) {
+if(document.getElementById(this.currentQ.correctAnswer).checked) {
 this.score ++;
 }
 }*/
