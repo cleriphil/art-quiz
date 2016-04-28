@@ -110,7 +110,7 @@ window.onload = function() {
 
 };
 
-//disable next button if nothing is checked
+//disable next button if nothing is checked -complete-
 //refactor everything
 //Add images and questions
 //Styling
