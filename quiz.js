@@ -6,29 +6,38 @@ window.onload = function() {
   }
 
   Quiz.prototype.nextQuestion = function(){
-    this.checkAnswer();
-    var questions = this.questions;
-    var index = questions.indexOf(this.currentQ);
-    if(index < questions.length - 1){
-      this.currentQ = questions[index + 1];
+//go through each choice and makes sure one is checked?
+
+  var inputs = document.getElementsByTagName('input');
+    if(inputs[0].checked === true || inputs[1].checked === true || inputs[2].checked === true || inputs[3].checked === true){
+
+      warningMsg.innerHTML = '';
+
+      this.checkAnswer();
+
+      var questions = this.questions;
+      var index = questions.indexOf(this.currentQ);
+      if(index < questions.length - 1){
+        this.currentQ = questions[index + 1];
+      } else {
+        document.getElementById('scoreContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
+        document.getElementById('scoreContainer').style.display = 'block';
+        document.getElementById('quizContainer').style.display = 'none';
+        startBtn.style.display = 'block';
+        startBtn.innerHTML = 'Try Again';
+      }
+      //populate next question
+      populateQuestion(this.currentQ.statement);
+      var currentChoices = this.currentQ.choices;
+      populateChoices(currentChoices);
+
+      //uncheck all radio buttons
+      var radioBtns = document.getElementsByTagName('input');
+      for(i=0;i<4;i++){
+        radioBtns[i].checked = false;
+      }
     } else {
-      document.getElementById('scoreContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
-      document.getElementById('scoreContainer').style.display = 'block';
-      document.getElementById('quizContainer').style.display = 'none';
-      startBtn.style.display = 'block';
-      startBtn.innerHTML = 'Try Again';
-
-    }
-
-    //populate next question
-    populateQuestion(this.currentQ.statement);
-    var currentChoices = this.currentQ.choices;
-    populateChoices(currentChoices);
-
-    //uncheck all radio buttons
-    var radioBtns = document.getElementsByTagName('input');
-    for(i=0;i<4;i++){
-      radioBtns[i].checked = false;
+      warningMsg.innerHTML = 'Please select an answer';
     }
   }
 
@@ -80,6 +89,7 @@ window.onload = function() {
   var choice1 = document.getElementById('choice1').nextSibling;
   var choice2 = document.getElementById('choice2').nextSibling;
   var choice3 = document.getElementById('choice3').nextSibling;
+  var warningMsg = document.getElementById('warningMsg');
 
   //start quiz
   startQuiz = function(){
@@ -97,4 +107,11 @@ window.onload = function() {
   startBtn.addEventListener('click', startQuiz, false);
 
 
+
 };
+
+//disable next button if nothing is checked
+//refactor everything
+//Add images and questions
+//Styling
+//Change next button to font awesome
