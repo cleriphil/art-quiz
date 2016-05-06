@@ -1,19 +1,28 @@
 #nextBtn, #startQuiz {
   height:40px;
-  background-color:teal;
   cursor: pointer;
-  color: #fff;
   line-height: 41px;
   text-align:center;
   border-radius:5px;
 }
 
 #nextBtn {
+  position: relative;
+  top: 4px;
+  left: 45px;
   width:50px;
+  background-color: transparent;
+  color: #008080;
+  font-size: 42px;
+}
+#nextBtn:hover {
+  color: #cccc00;
 }
 
 #startQuiz {
+  background-color:#008080;
   width: 100px;
+  color: #fff;
 }
 .score {
   color: #008080;
@@ -34,6 +43,7 @@
 
 #warningMsg {
   color: #ff0000;
+  height: 20px;
 }
 
 button:focus {
@@ -42,4 +52,12 @@ button:focus {
 
 button {
   border-style: none;
+}
+
+#question img {
+  width: 100%;
+}
+
+input {
+  font-size: 40px;
 }

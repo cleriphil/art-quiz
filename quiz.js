@@ -62,7 +62,7 @@ window.onload = function() {
   }
 
   var populateQuestion = function(statement){
-    questionUI.innerHTML = '<img src=' + statement + ' width="500">';
+    questionUI.innerHTML = '<img src=' + statement + '>';
   };
 
   var populateChoices = function(choices){
@@ -108,8 +108,13 @@ window.onload = function() {
 
 };
 
-//disable next button if nothing is checked -complete-
-//refactor everything
+//refactor 
 //resize images/add images
-//Styling
-//Change next button to font awesome
+
+//Show correct answers with descriptions
+//Add lightbox to view image larger
+
+//on hover add magnifying glass icon: <i class="fa fa-search-plus" aria-hidden="true"></i>
+//make enter key work for next question
+
+//user experience with input elements/make it select when clicking the label?
