@@ -62,7 +62,7 @@ window.onload = function() {
   }
 
   var populateQuestion = function(statement){
-    questionUI.innerHTML = statement;
+    questionUI.innerHTML = '<img src=' + statement + ' width="500">';
   };
 
   var populateChoices = function(choices){
@@ -74,12 +74,12 @@ window.onload = function() {
 
   //create artQuiz object
   var allQuestions = [
-    {statement: "Who is often given credit for inventing cubism?", choices: ["Georges Braque", "Frida Kahlo", "Francis Picabia", "Marcel Duchamp"], correctAnswer:0},
-    {statement: "Matisse died in 1954 leaving his ceiling covered with drawings. How come?", choices: ["After 60 years of paint fumes he wasn\'t \'all there\' towards the end.","He was doing preliminary sketches for a ceiling fresco.","He was bedridden and drew using a long stick.","He ran out of walls to draw on."], correctAnswer:2},
-    {statement: "Q 3", choices: ["Q 3 A","Q 3 B","Q 3 C","Q 3 D"], correctAnswer:2},
-    {statement: "Q 4", choices: ["Q 4 A","Q 4 B","Q 4 C","Q 4 D"], correctAnswer:3},
-    {statement: "Q 5", choices: ["Q 5 A","Q 5 B","Q 5 C","Q 5 D"], correctAnswer:1},
-    {statement: "Q 6", choices: ["Q 6 A","Q 6 B","Q 6 C","Q 6 D"], correctAnswer:0}
+    {statement: "images/question_1.jpg", choices: ["Gustave Courbet", "Paul Gauguin", "Jean-François Millet", "Édouard Manet"], correctAnswer:3, description:""},
+    {statement: "images/question_2.jpg", choices: ["Hendrick Goltzius","Giovanni Battista Piranesi","Albrecht Durer","Odilon Redon"], correctAnswer:1, description:""},
+    {statement: "images/question_3.jpg", choices: ["Matthias Grünewald","Rogier van der Weyden","Jan Gossart","Jan van Eyck"], correctAnswer:3, description:"Portrait of Margareta van Eyck<br/>  1439<br/>  Oil on wood, 32,6 x 25,8 cm<br/> Groeninge Museum, Bruges"},
+    {statement: "images/question_4.jpg", choices: ["Masaccio","Sandro Botticelli","Giovanni Bellini","Giorgione"], correctAnswer:1, description:"Virgin and Child with Young St John the Baptist<br/> 1470-75<br/>  Wood, 90 x 67 cm<br/>  Musée du Louvre, Paris"},
+    {statement: "images/question_5.jpg", choices: ["Pieter Bruegel the Elder","Lucas Cranach the Elder","Hieronymus Bosch","Jan Gossart"], correctAnswer:0, description:"The Tower of Babel<br/> 1563<br/> Oil on oak panel, 114 x 155 cm<br/> Kunsthistorisches Museum, Vienna"},
+    {statement: "images/question_6.jpg", choices: ["Pierre-Auguste Renoir","Mary Cassatt","Edgar Degas","Berthe Morisot"], correctAnswer:3, description:"The Cheval-Glass<br/> 1877-79<br/> Oil on canvas, 65 x 54 cm<br/> Museo Thyssen-Bornemisza, Madrid"}
   ];
   var artQuiz = new Quiz(allQuestions);
 
@@ -106,12 +106,10 @@ window.onload = function() {
   var startBtn = document.getElementById('startQuiz');
   startBtn.addEventListener('click', startQuiz, false);
 
-
-
 };
 
 //disable next button if nothing is checked -complete-
 //refactor everything
-//Add images and questions
+//resize images/add images
 //Styling
 //Change next button to font awesome
