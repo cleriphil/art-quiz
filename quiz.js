@@ -51,11 +51,13 @@ window.onload = function() {
 
   var initiateQuiz = function(){
     //set currentQ and score to default
+    artQuiz.currentI = 0;
     artQuiz.currentQ = artQuiz.questions[0];
     artQuiz.score = 0;
     scoreBox.style.display = 'none';
 
-    var firstQ = artQuiz.currentQ;
+    //var firstQ = artQuiz.currentQ;
+    var firstQ = artQuiz.questions[currentI];
     var firstChoices = firstQ.choices;
     populateQuestion(firstQ.statement);
     populateChoices(firstChoices);
