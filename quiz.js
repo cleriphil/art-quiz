@@ -24,26 +24,21 @@ window.onload = function() {
        warningMsg.innerHTML = 'Please select an answer';
      } else {
        warningMsg.innerHTML = '';
-
        var questions = this.questions;
        var index = questions.indexOf(this.currentQ);
-       if(index < questions.length - 1){
-         this.currentQ = questions[index + 1];
+
+       if (this.currentQ !== questions[questions.length-1]) {
+           this.currentQ = questions[index + 1];
+           populateQuestion(this.currentQ.statement);  //populate next question
+           var currentChoices = this.currentQ.choices;
+           populateChoices(currentChoices);
        } else {
-         document.getElementById('scoreContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
-         document.getElementById('scoreContainer').style.display = 'block';
          document.getElementById('quizContainer').style.display = 'none';
-
-       //  var answersBtn = document.createElement('button');
-       //  answersBtn.innerHTML = 'Show Answers';
-
-         startBtn.style.display = 'block';
+         scoreBox.innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
+         scoreBox.style.display = 'block';
          startBtn.innerHTML = 'Try Again';
+         startBtn.style.display = 'block';
        }
-       //populate next question
-       populateQuestion(this.currentQ.statement);
-       var currentChoices = this.currentQ.choices;
-       populateChoices(currentChoices);
      }
   }
 
@@ -58,7 +53,7 @@ window.onload = function() {
     //set currentQ and score to default
     artQuiz.currentQ = artQuiz.questions[0];
     artQuiz.score = 0;
-    document.getElementById('scoreContainer').style.display = 'none';
+    scoreBox.style.display = 'none';
 
     var firstQ = artQuiz.currentQ;
     var firstChoices = firstQ.choices;
@@ -88,6 +83,7 @@ window.onload = function() {
   ];
   var artQuiz = new Quiz(allQuestions);
 
+
   //UI variables
   var questionUI = document.getElementById('question');
   var choice0 = document.getElementById('choice0').nextSibling;
@@ -95,6 +91,7 @@ window.onload = function() {
   var choice2 = document.getElementById('choice2').nextSibling;
   var choice3 = document.getElementById('choice3').nextSibling;
   var warningMsg = document.getElementById('warningMsg');
+  var scoreBox = document.getElementById('scoreBox');
 
   //start quiz
   startQuiz = function(){
