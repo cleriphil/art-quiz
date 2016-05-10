@@ -7,58 +7,54 @@ window.onload = function() {
 
   Quiz.prototype.nextQuestion = function(){
 
-
-
+    var noAnswer;
     var inputs = document.getElementsByTagName('input');
-    for(x=0; x<inputs.length; x++){
-      if (inputs[x].checked) {   //if an answer is checked
+    for(x=0; x<inputs.length; x++){ //make sure there is a checked answer
+       if (inputs[x].checked) {
+         noAnswer = false;
+         this.checkAnswer();
+         inputs[x].checked = false;
+         break;
+       } else {
+         noAnswer = true;
+       }
+     }
 
-        warningMsg.innerHTML = '';
+     if(noAnswer){
+       warningMsg.innerHTML = 'Please select an answer';
+     } else {
+       warningMsg.innerHTML = '';
 
-        this.checkAnswer();
+       var questions = this.questions;
+       var index = questions.indexOf(this.currentQ);
+       if(index < questions.length - 1){
+         this.currentQ = questions[index + 1];
+       } else {
+         document.getElementById('scoreContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
+         document.getElementById('scoreContainer').style.display = 'block';
+         document.getElementById('quizContainer').style.display = 'none';
 
-        var questions = this.questions;
-        var index = questions.indexOf(this.currentQ);
-        if(index < questions.length - 1){
-          this.currentQ = questions[index + 1];
-        } else {
-          document.getElementById('scoreContainer').innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
-          document.getElementById('scoreContainer').style.display = 'block';
-          document.getElementById('quizContainer').style.display = 'none';
+       //  var answersBtn = document.createElement('button');
+       //  answersBtn.innerHTML = 'Show Answers';
 
-        //  var answersBtn = document.createElement('button');
-        //  answersBtn.innerHTML = 'Show Answers';
-
-          startBtn.style.display = 'block';
-          startBtn.innerHTML = 'Try Again';
-        }
-        //populate next question
-        populateQuestion(this.currentQ.statement);
-        var currentChoices = this.currentQ.choices;
-        populateChoices(currentChoices);
-
-        //uncheck all radio buttons
-        var radioBtns = document.getElementsByTagName('input');
-        for(i=0;i<4;i++){
-          radioBtns[i].checked = false;
-        }
-        break;
-
-      } else {
-        warningMsg.innerHTML = 'Please select an answer'; //poor solution - does this step for every unselected answer even when there is a selected answer
-      }
-    }
+         startBtn.style.display = 'block';
+         startBtn.innerHTML = 'Try Again';
+       }
+       //populate next question
+       populateQuestion(this.currentQ.statement);
+       var currentChoices = this.currentQ.choices;
+       populateChoices(currentChoices);
+     }
   }
 
   Quiz.prototype.checkAnswer = function(){
     var correctA = "choice" + this.currentQ.correctAnswer;
     if(document.getElementById(correctA).checked) {
-    this.score ++;
+      this.score ++;
     }
   }
 
   var initiateQuiz = function(){
-
     //set currentQ and score to default
     artQuiz.currentQ = artQuiz.questions[0];
     artQuiz.score = 0;
