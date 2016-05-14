@@ -1,9 +1,11 @@
 window.onload = function() {
 
+
   //Quiz constructor
   function Quiz(questions) {
     this.questions = questions;
   }
+
 
   Quiz.prototype.nextQuestion = function(){
 
@@ -49,6 +51,25 @@ window.onload = function() {
     }
   }
 
+  var artQuiz;
+  function fetchJSONFile(path, callback) {
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.onreadystatechange = function() {
+          if (httpRequest.readyState === 4 || httpRequest.readyState === 0) {
+              if (httpRequest.status === 200 || httpRequest.status === 0) {
+                  var data = JSON.parse(httpRequest.responseText);
+                  if (callback) callback(data);
+              }
+          }
+      };
+      httpRequest.open('GET', path);
+      httpRequest.send();
+  }
+
+  fetchJSONFile('quizdata.json', function(data){
+    artQuiz = new Quiz(data.quizdata.allQuestions);
+  });
+
   var initiateQuiz = function(){
     //set currentQ and score to default
     artQuiz.currentQ = artQuiz.questions[0];
@@ -71,17 +92,6 @@ window.onload = function() {
     choice2.textContent = choices[2];
     choice3.textContent = choices[3];
   };
-
-  //create artQuiz object
-  var allQuestions = [
-    {statement: "images/question_1.jpg", choices: ["Gustave Courbet", "Paul Gauguin", "Jean-François Millet", "Édouard Manet"], correctAnswer:3, description:""},
-    {statement: "images/question_2.jpg", choices: ["Hendrick Goltzius","Giovanni Battista Piranesi","Albrecht Durer","Odilon Redon"], correctAnswer:1, description:""},
-    {statement: "images/question_3.jpg", choices: ["Matthias Grünewald","Rogier van der Weyden","Jan Gossart","Jan van Eyck"], correctAnswer:3, description:"Portrait of Margareta van Eyck<br/>  1439<br/>  Oil on wood, 32,6 x 25,8 cm<br/> Groeninge Museum, Bruges"},
-    {statement: "images/question_4.jpg", choices: ["Masaccio","Sandro Botticelli","Giovanni Bellini","Giorgione"], correctAnswer:1, description:"Virgin and Child with Young St John the Baptist<br/> 1470-75<br/>  Wood, 90 x 67 cm<br/>  Musée du Louvre, Paris"},
-    {statement: "images/question_5.jpg", choices: ["Pieter Bruegel the Elder","Lucas Cranach the Elder","Hieronymus Bosch","Jan Gossart"], correctAnswer:0, description:"The Tower of Babel<br/> 1563<br/> Oil on oak panel, 114 x 155 cm<br/> Kunsthistorisches Museum, Vienna"},
-    {statement: "images/question_6.jpg", choices: ["Pierre-Auguste Renoir","Mary Cassatt","Edgar Degas","Berthe Morisot"], correctAnswer:3, description:"The Cheval-Glass<br/> 1877-79<br/> Oil on canvas, 65 x 54 cm<br/> Museo Thyssen-Bornemisza, Madrid"}
-  ];
-  var artQuiz = new Quiz(allQuestions);
 
 
   //UI variables
@@ -120,3 +130,4 @@ window.onload = function() {
 //make enter key work for next question
 
 //user experience with input elements/make it select when clicking the label?
+//hint
