@@ -13,7 +13,7 @@ window.onload = function() {
 
       var noAnswer;
       var inputs = document.getElementsByTagName('input');
-      for(x=0; x<inputs.length; x++){ //make sure there is a checked answer
+      for(var x=0; x<inputs.length; x++){ //make sure there is a checked answer
          if (inputs[x].checked) {
            noAnswer = false;
            this.checkAnswer();
@@ -106,7 +106,7 @@ window.onload = function() {
     var scoreBox = document.getElementById('scoreBox');
 
     //start quiz
-    startQuiz = function(){
+    var startQuiz = function(){
       document.getElementById('quizContainer').style.display = 'block';
       startBtn.style.display = 'none';
       initiateQuiz();
