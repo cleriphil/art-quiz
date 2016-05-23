@@ -38,7 +38,8 @@ window.onload = function() {
              populateChoices(currentChoices);
          } else {
            document.getElementById('quizContainer').style.display = 'none';
-           scoreBox.innerHTML = '<span class="score">Score: ' + this.score + ' out of ' + questions.length + '</span>';
+           var scorePercent = this.calculateScore();
+           scoreBox.innerHTML = '<span class="score">Score: ' + this.calculateScore() + '% </span>';
            scoreBox.style.display = 'block';
            startBtn.innerHTML = 'Try Again';
            startBtn.style.display = 'block';
@@ -46,11 +47,18 @@ window.onload = function() {
        }
     };
 
+
     Quiz.prototype.checkAnswer = function(){
       var correctA = "choice" + this.currentQ.correctAnswer;
       if(document.getElementById(correctA).checked) {
         this.score ++;
       }
+    };
+
+    Quiz.prototype.calculateScore = function(){
+      var correctAnswers = this.score;
+      var numQuestions = this.questions.length;
+      return Math.ceil((correctAnswers/numQuestions) * 100);
     };
 
     var artQuiz;
@@ -95,6 +103,9 @@ window.onload = function() {
       choice3.textContent = choices[3];
     };
 
+    var getId = function(id) {
+      return document.getElementById(id);
+    };
 
     //UI variables
     var questionUI = document.getElementById('question');
@@ -104,6 +115,9 @@ window.onload = function() {
     var choice3 = document.getElementById('choice3').nextSibling;
     var warningMsg = document.getElementById('warningMsg');
     var scoreBox = document.getElementById('scoreBox');
+
+
+
 
     //start quiz
     var startQuiz = function(){
