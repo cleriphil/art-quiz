@@ -1,16 +1,14 @@
 window.onload = function() {
 
   var quizModule = (function() {
-    'use strict';//
+    'use strict';
 
     //Quiz constructor
     function Quiz(questions) {
       this.questions = questions;
     }
 
-
     Quiz.prototype.nextQuestion = function(){
-
       var noAnswer;
       var inputs = document.getElementsByTagName('input');
       for(var x=0; x<inputs.length; x++){ //make sure there is a checked answer
@@ -23,7 +21,6 @@ window.onload = function() {
            noAnswer = true;
          }
        }
-
        if(noAnswer){
          warningMsg.innerHTML = 'Please select an answer';
        } else {
@@ -36,11 +33,7 @@ window.onload = function() {
              var question = this.currentQ;
              populateQuestion(question.statement, question.choices);  //populate next question
          } else {
-           document.getElementById('quizContainer').style.display = 'none';
-           scoreBox.innerHTML = '<span class="score">Score: ' + this.calculateScore() + '% </span>';
-           scoreBox.style.display = 'block';
-           startBtn.innerHTML = 'Try Again';
-           startBtn.style.display = 'block';
+           this.showScore();
          }
        }
     };
@@ -56,6 +49,14 @@ window.onload = function() {
       var correctAnswers = this.score;
       var numQuestions = this.questions.length;
       return Math.ceil((correctAnswers/numQuestions) * 100);
+    };
+
+    Quiz.prototype.showScore = function(){
+      quizContainer.style.display = 'none';
+      scoreBox.innerHTML = '<span class="score">Score: ' + this.calculateScore() + '% </span>';
+      scoreBox.style.display = 'block';
+      startBtn.innerHTML = 'Try Again';
+      startBtn.style.display = 'block';
     };
 
     var artQuiz;
@@ -98,8 +99,9 @@ window.onload = function() {
       return document.getElementById(id);
     };
 
-    //UI variables
+    // UI variables
     var questionUI = document.getElementById('question');
+    var quizContainer = document.getElementById('quizContainer');
     var choice0 = document.getElementById('choice0').nextSibling;
     var choice1 = document.getElementById('choice1').nextSibling;
     var choice2 = document.getElementById('choice2').nextSibling;
@@ -107,9 +109,9 @@ window.onload = function() {
     var warningMsg = document.getElementById('warningMsg');
     var scoreBox = document.getElementById('scoreBox');
 
-    //start quiz
+    // Start quiz
     var startQuiz = function(){
-      document.getElementById('quizContainer').style.display = 'block';
+      quizContainer.style.display = 'block';
       startBtn.style.display = 'none';
       initiateQuiz();
     };
@@ -118,20 +120,9 @@ window.onload = function() {
     var nextButton = document.getElementById('nextBtn');
     nextButton.addEventListener('click', function() { artQuiz.nextQuestion(); }, false);
 
-    //start quiz
+    // Start quiz
     var startBtn = document.getElementById('startQuiz');
     startBtn.addEventListener('click', startQuiz, false);
+
   }());
 };
-
-//refactor
-//resize images/add images
-
-//Show correct answers with descriptions
-//Add lightbox to view image larger
-
-//on hover add magnifying glass icon: <i class="fa fa-search-plus" aria-hidden="true"></i>
-//make enter key work for next question
-
-//user experience with input elements/make it select when clicking the label?
-//hint
