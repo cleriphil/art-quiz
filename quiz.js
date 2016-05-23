@@ -33,12 +33,10 @@ window.onload = function() {
 
          if (this.currentQ !== questions[questions.length-1]) {
              this.currentQ = questions[index + 1];
-             populateQuestion(this.currentQ.statement);  //populate next question
-             var currentChoices = this.currentQ.choices;
-             populateChoices(currentChoices);
+             var question = this.currentQ;
+             populateQuestion(question.statement, question.choices);  //populate next question
          } else {
            document.getElementById('quizContainer').style.display = 'none';
-           var scorePercent = this.calculateScore();
            scoreBox.innerHTML = '<span class="score">Score: ' + this.calculateScore() + '% </span>';
            scoreBox.style.display = 'block';
            startBtn.innerHTML = 'Try Again';
@@ -46,7 +44,6 @@ window.onload = function() {
          }
        }
     };
-
 
     Quiz.prototype.checkAnswer = function(){
       var correctA = "choice" + this.currentQ.correctAnswer;
@@ -85,18 +82,12 @@ window.onload = function() {
       artQuiz.currentQ = artQuiz.questions[0];
       artQuiz.score = 0;
       scoreBox.style.display = 'none';
-
       var firstQ = artQuiz.currentQ;
-      var firstChoices = firstQ.choices;
-      populateQuestion(firstQ.statement);
-      populateChoices(firstChoices);
+      populateQuestion(firstQ.statement, firstQ.choices);
     };
 
-    var populateQuestion = function(statement){
+    var populateQuestion = function(statement, choices){
       questionUI.innerHTML = '<img src=' + statement + '>';
-    };
-
-    var populateChoices = function(choices){
       choice0.textContent = choices[0];
       choice1.textContent = choices[1];
       choice2.textContent = choices[2];
@@ -115,9 +106,6 @@ window.onload = function() {
     var choice3 = document.getElementById('choice3').nextSibling;
     var warningMsg = document.getElementById('warningMsg');
     var scoreBox = document.getElementById('scoreBox');
-
-
-
 
     //start quiz
     var startQuiz = function(){
