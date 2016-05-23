@@ -9,25 +9,8 @@ window.onload = function() {
     }
 
     Quiz.prototype.nextQuestion = function(){
-      var noAnswer;
-      var inputs = document.getElementsByTagName('input');
-      for(var x=0; x<inputs.length; x++){ //make sure there is a checked answer
-         if (inputs[x].checked) {
-           noAnswer = false;
-           this.checkAnswer();
-           inputs[x].checked = false;
-           break;
-         } else {
-           noAnswer = true;
-         }
-       }
-       if(noAnswer){
-         warningMsg.innerHTML = 'Please select an answer';
-       } else {
-         warningMsg.innerHTML = '';
          var questions = this.questions;
          var index = questions.indexOf(this.currentQ);
-
          if (this.currentQ !== questions[questions.length-1]) {
              this.currentQ = questions[index + 1];
              var question = this.currentQ;
@@ -35,8 +18,24 @@ window.onload = function() {
          } else {
            this.showScore();
          }
-       }
     };
+
+    Quiz.prototype.validateChoice = function(){
+      var inputs = document.getElementsByTagName('input');
+      for(var x=0; x<inputs.length; x++){ //make sure there is a checked answer
+         if (inputs[x].checked) {
+           this.checkAnswer();
+           inputs[x].checked = false;
+           this.nextQuestion();
+           warningMsg.innerHTML = '';
+           return true;
+         }
+       }
+      warningMsg.innerHTML = 'Please select an answer';
+    };
+
+    //check if there's an answer
+
 
     Quiz.prototype.checkAnswer = function(){
       var correctA = "choice" + this.currentQ.correctAnswer;
@@ -118,7 +117,7 @@ window.onload = function() {
 
     // Next question
     var nextButton = document.getElementById('nextBtn');
-    nextButton.addEventListener('click', function() { artQuiz.nextQuestion(); }, false);
+    nextButton.addEventListener('click', function() { artQuiz.validateChoice(); }, false);
 
     // Start quiz
     var startBtn = document.getElementById('startQuiz');
