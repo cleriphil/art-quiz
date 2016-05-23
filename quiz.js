@@ -14,7 +14,7 @@ window.onload = function() {
          if (this.currentQ !== questions[questions.length-1]) {
              this.currentQ = questions[index + 1];
              var question = this.currentQ;
-             populateQuestion(question.statement, question.choices);  //populate next question
+             populateQuestion(question.image, question.choices);  //populate next question
          } else {
            this.showScore();
          }
@@ -22,7 +22,7 @@ window.onload = function() {
 
     Quiz.prototype.validateChoice = function(){
       var inputs = document.getElementsByTagName('input');
-      for(var x=0; x<inputs.length; x++){ //make sure there is a checked answer
+      for(var x=0; x<inputs.length; x++){
          if (inputs[x].checked) {
            this.checkAnswer();
            inputs[x].checked = false;
@@ -33,9 +33,6 @@ window.onload = function() {
        }
       warningMsg.innerHTML = 'Please select an answer';
     };
-
-    //check if there's an answer
-
 
     Quiz.prototype.checkAnswer = function(){
       var correctA = "choice" + this.currentQ.correctAnswer;
@@ -78,16 +75,15 @@ window.onload = function() {
     });
 
     var initiateQuiz = function(){
-      //set currentQ and score to default
       artQuiz.currentQ = artQuiz.questions[0];
       artQuiz.score = 0;
       scoreBox.style.display = 'none';
       var firstQ = artQuiz.currentQ;
-      populateQuestion(firstQ.statement, firstQ.choices);
+      populateQuestion(firstQ.image, firstQ.choices);
     };
 
-    var populateQuestion = function(statement, choices){
-      questionUI.innerHTML = '<img src=' + statement + '>';
+    var populateQuestion = function(image, choices){
+      questionUI.innerHTML = '<img src=' + image + '>';
       choice0.textContent = choices[0];
       choice1.textContent = choices[1];
       choice2.textContent = choices[2];
