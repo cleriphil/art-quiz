@@ -27,11 +27,11 @@ window.onload = function() {
            this.checkAnswer();
            inputs[x].checked = false;
            this.nextQuestion();
-           warningMsg.innerHTML = '';
+           warningMsg.textContent = '';
            return true;
          }
        }
-      warningMsg.innerHTML = 'Please select an answer';
+      warningMsg.textContent = 'Please select an answer';
     };
 
     Quiz.prototype.checkAnswer = function(){
@@ -51,7 +51,7 @@ window.onload = function() {
       quizContainer.style.display = 'none';
       scoreBox.innerHTML = '<span class="score">Score: ' + this.calculateScore() + '% </span>';
       scoreBox.style.display = 'block';
-      startBtn.innerHTML = 'Try Again';
+      startBtn.textContent = 'Try Again';
       startBtn.style.display = 'block';
     };
 
@@ -111,9 +111,12 @@ window.onload = function() {
       initiateQuiz();
     };
 
+    //When clicking on label, check its closest input
+
     // Next question
     var nextButton = document.getElementById('nextBtn');
     nextButton.addEventListener('click', function() { artQuiz.validateChoice(); }, false);
+    //also on enter key
 
     // Start quiz
     var startBtn = document.getElementById('startQuiz');
