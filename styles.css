@@ -16,31 +16,17 @@
   color: #fff;
   font-size:50px;
   text-align: center;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
-  -ms-transition-property: background-color;
-  transition-property: background-color;
-  webkit-transition-duration: 5s;
-  -moz-transition-duration: 5s;
-  -o-transition-duration: 5s;
-  -ms-transition-duration:5s;
-  transition-duration: 5s;
+  -webkit-transition: background-color 3s, color 2s;
+  -moz-transition: background-color 3s, color 2s;
+  -o-transition: background-color 3s, color 2s;
+  -ms-transition: background-color 3s, color 2s;
+  transition: background-color 3s, color 2s;
 }
+
 #startQuiz div {
   font-family: 'Lora', serif;
   line-height: 49px;
   margin-top: 30px;
-  -webkit-transition-property: color;
-  -moz-transition-property: color;
-  -o-transition-property: color;
-  -ms-transition-property: color;
-  transition-property: color;
-  webkit-transition-duration: 2s;
-  -moz-transition-duration: 2s;
-  -o-transition-duration: 2s;
-  -ms-transition-duration:2s;
-  transition-duration: 2s;
 }
 
 h1 {
@@ -58,13 +44,6 @@ h1 {
   color:#fff;
 
 }
-#nextBtn {
-  height:40px;
-  cursor: pointer;
-  line-height: 41px;
-  text-align:center;
-  border-radius:5px;
-}
 
 #nextBtn {
   position: relative;
@@ -74,16 +53,11 @@ h1 {
   background-color: transparent;
   color: #008080;
   font-size: 42px;
-  -webkit-transition-property: color;
-  -moz-transition-property: color;
-  -o-transition-property: color;
-  -ms-transition-property: color;
-  transition-property: color;
-  -webkit-transition-duration: 2s;
-  -moz-transition-duration: 2s;
-  -o-transition-duration: 2s;
-  -ms-transition-duration: 2s;
-  transition-duration: 2s;
+  -webkit-transition: color 2s;
+  -moz-transition: color 2s;
+  -o-transition: color 2s;
+  -ms-transition: color 2s;
+  transition: color 2s;
 }
 
 #nextBtn:hover {
