@@ -121,13 +121,12 @@ window.onload = function() {
 
     function submitOnEnter(e) {
         if (e.keyCode == "13") {
-            console.log("The 'enter' key is pressed.");
             artQuiz.validateChoice();
         }
     }
 
     var inputChoices = document.getElementsByTagName('input');
-    inputChoices[0].addEventListener('keypress', function() { artQuiz.validateChoice(); }, false);
+    inputChoices[0].addEventListener('keydown', function() { artQuiz.validateChoice(); }, false);
     //also on enter key
 
     // Start quiz
