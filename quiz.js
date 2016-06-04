@@ -116,6 +116,18 @@ window.onload = function() {
     // Next question
     var nextButton = document.getElementById('nextBtn');
     nextButton.addEventListener('click', function() { artQuiz.validateChoice(); }, false);
+
+    window.addEventListener("keydown", submitOnEnter, false);
+
+    function submitOnEnter(e) {
+        if (e.keyCode == "13") {
+            console.log("The 'enter' key is pressed.");
+            artQuiz.validateChoice();
+        }
+    }
+
+    var inputChoices = document.getElementsByTagName('input');
+    inputChoices[0].addEventListener('keypress', function() { artQuiz.validateChoice(); }, false);
     //also on enter key
 
     // Start quiz
@@ -124,3 +136,5 @@ window.onload = function() {
 
   }());
 };
+
+//python -m SimpleHTTPServer 8000
