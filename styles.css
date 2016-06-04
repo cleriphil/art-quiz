@@ -1,3 +1,20 @@
+#landingContainer {
+  background: #fff url('/images/frame.jpg') 0px 0px no-repeat;
+  min-height: 600px;
+  width: 430px;
+  margin: 26px auto;
+  padding-top: 82px;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size:50px;
+  text-align: center;
+}
+
+#startQuiz {
+  margin: 0 auto;
+}
 #nextBtn, #startQuiz {
   height:40px;
   cursor: pointer;
@@ -5,6 +22,7 @@
   text-align:center;
   border-radius:5px;
 }
+
 
 #nextBtn {
   position: relative;
@@ -14,7 +32,18 @@
   background-color: transparent;
   color: #008080;
   font-size: 42px;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -ms-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 2s;
+  -moz-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  -ms-transition-duration: 2s;
+  transition-duration: 2s;
 }
+
 #nextBtn:hover {
   color: #cccc00;
 }
@@ -23,7 +52,23 @@
   background-color:#008080;
   width: 100px;
   color: #fff;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  -ms-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 2s;
+  -moz-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  -ms-transition-duration: 2s;
+  transition-duration: 2s;
 }
+
+#startQuiz:hover {
+  background-color: #cccc00;
+}
+
+
 .score {
   color: #008080;
   font-size: 50px;

@@ -107,7 +107,8 @@ window.onload = function() {
     // Start quiz
     var startQuiz = function(){
       quizContainer.style.display = 'block';
-      startBtn.style.display = 'none';
+      var landingContainer = document.getElementById('landingContainer');
+      landingContainer.style.display = 'none';
       initiateQuiz();
     };
 
