@@ -6,23 +6,65 @@
   padding-top: 82px;
 }
 
+#startQuiz {
+  height: 364px;
+  width: 240px;
+  margin: 20px auto;
+  padding-top: 10px;
+  background-color: #008080;
+  cursor: pointer;
+  color: #fff;
+  font-size:50px;
+  text-align: center;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  -ms-transition-property: background-color;
+  transition-property: background-color;
+  webkit-transition-duration: 5s;
+  -moz-transition-duration: 5s;
+  -o-transition-duration: 5s;
+  -ms-transition-duration:5s;
+  transition-duration: 5s;
+}
+#startQuiz div {
+  font-family: 'Lora', serif;
+  line-height: 49px;
+  margin-top: 30px;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -ms-transition-property: color;
+  transition-property: color;
+  webkit-transition-duration: 2s;
+  -moz-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  -ms-transition-duration:2s;
+  transition-duration: 2s;
+}
+
 h1 {
   font-family: 'Dancing Script', cursive;
   font-size:50px;
-  text-align: center;
 }
 
-#startQuiz {
-  margin: 0 auto;
+
+#startQuiz:hover {
+    background-color: #cccc00;
+    color: #E5DBCF;
 }
-#nextBtn, #startQuiz {
+
+#startQuiz:hover div {
+  color:#fff;
+
+}
+#nextBtn {
   height:40px;
   cursor: pointer;
   line-height: 41px;
   text-align:center;
   border-radius:5px;
 }
-
 
 #nextBtn {
   position: relative;
@@ -47,27 +89,6 @@ h1 {
 #nextBtn:hover {
   color: #cccc00;
 }
-
-#startQuiz {
-  background-color:#008080;
-  width: 100px;
-  color: #fff;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
-  -ms-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 2s;
-  -moz-transition-duration: 2s;
-  -o-transition-duration: 2s;
-  -ms-transition-duration: 2s;
-  transition-duration: 2s;
-}
-
-#startQuiz:hover {
-  background-color: #cccc00;
-}
-
 
 .score {
   color: #008080;
