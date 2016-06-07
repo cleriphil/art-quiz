@@ -84,6 +84,14 @@ h1 {
 #warningMsg {
   color: #ff0000;
   height: 20px;
+  font-family: 'Lora', serif;
+}
+
+#onboardMsg {
+  height: 20px;
+  font-size: 18px;
+  font-family: 'Lora', serif;
+  color: #008080;
 }
 
 button:focus {
@@ -101,4 +109,8 @@ button {
 input {
   font-size: 40px;
   cursor: pointer;
+}
+
+.col-md-6 {
+  padding-top: 30px;
 }

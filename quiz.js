@@ -51,8 +51,6 @@ window.onload = function() {
       quizContainer.style.display = 'none';
       scoreBox.innerHTML = '<span class="score">Score: ' + this.calculateScore() + '% </span>';
       scoreBox.style.display = 'block';
-      startBtn.textContent = 'Try Again';
-      startBtn.style.display = 'block';
     };
 
     var artQuiz;
@@ -110,6 +108,10 @@ window.onload = function() {
       var landingContainer = document.getElementById('landingContainer');
       landingContainer.style.display = 'none';
       initiateQuiz();
+      window.setTimeout(
+        function(){
+        document.getElementById('onboardMsg').textContent = ''
+      }, 5000);
     };
 
     //When clicking on label, check its closest input
@@ -128,7 +130,6 @@ window.onload = function() {
 
     var inputChoices = document.getElementsByTagName('input');
     inputChoices[0].addEventListener('keydown', function() { artQuiz.validateChoice(); }, false);
-    //also on enter key
 
     // Start quiz
     var startBtn = document.getElementById('startQuiz');
